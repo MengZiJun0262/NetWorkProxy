@@ -1,11 +1,13 @@
+# FILTER_LAN, tag=LAN, force-policy=direct, inserted-resource=true, enabled=true
 # 私有地址
-IP-CIDR, 10.0.0.0/8, DIRECT
-IP-CIDR, 172.16.0.0/12, DIRECT
-IP-CIDR, 192.168.0.0/16, DIRECT
+# IP-CIDR, 10.0.0.0/8, DIRECT
+# IP-CIDR, 172.16.0.0/12, DIRECT
+# IP-CIDR, 192.168.0.0/16, DIRECT
 # 回环地址
-IP-CIDR, 127.0.0.0/8, DIRECT
+# IP-CIDR, 127.0.0.0/8, DIRECT
 # 组播地址
-IP-CIDR, 224.0.0.0/24, DIRECT
+# IP-CIDR, 224.0.0.0/24, DIRECT
+
 # 12306
 HOST, ad.12306.cn, DIRECT
 # 微博
