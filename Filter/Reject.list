@@ -1,5 +1,5 @@
 #百度贴吧
-#屏蔽域名dns查询，配合贴吧去广告 https://raw.githubusercontent.com/app2smile/rules/master/module/tieba-qx.conf
+#屏蔽域名dns查询，配合贴吧去广告 https://raw.githubusercontent.com/app2smile/rules
 IP-CIDR, 180.76.76.200/32, REJECT
 #滴滴出行
 IP-CIDR, 123.207.209.39/32, REJECT
