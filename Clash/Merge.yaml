@@ -12,92 +12,7 @@ tun:                          # 虚拟网卡
   - any:53
   mtu: 1500                   # 最大传输单元
 # Clash设置
-allow-lan: false                        # 局域网链接 [关闭]
-dns:                                    # DNS覆写
-  enable: true                          # DNS解析 [开启]
-  listen: :53                           # DNS监听地址
-  enhanced-mode: fake-ip                # Mihomo的DNS处理模式 [fake-ip/redir-host]
-  fake-ip-range: 198.18.0.1/16          # Fake IP范围
-  fake-ip-filter-mode: blacklist        # Fake IP过滤模式 [blacklist/whitelist]
-  ipv6: false                           # IPv6 DNS解析 [关闭]
-  prefer-h3: true                       # DNS DOH使用HTTP/3协议 [开启]
-  respect-rules: false                  # DNS链接遵循路由规则 [关闭]
-  use-hosts: true                       # 通过Host文件解析域名 [开启]
-  use-system-hosts: true                # 通过系统 Host 文件解析域名 [开启]
-  direct-nameserver-follow-policy: true # 直连域名服务器遵循策略 [开启]
-  # 默认域名服务器, 用于解析DNS服务器的默认DNS服务器
-  default-nameserver:
-  - 119.29.29.29
-  - 223.5.5.5
-  # 默认的域名解析服务器
-  nameserver:
-  - https://doh.pub/dns-query
-  - https://dns.alidns.com/dns-query
-  - https://dns.google/dns-query
-  - https://cloudflare-dns.com/dns-query
-  - system
-  # 后备域名解析服务器
-  fallback:
-  - https://dns.google/dns-query
-  - https://cloudflare-dns.com/dns-query
-  # 代理节点域名解析服务器
-  proxy-server-nameserver:
-  - https://doh.pub/dns-query
-  - https://dns.alidns.com/dns-query
-  - system
-  # 直连出口域名解析的DNS服务器
-  direct-nameserver:
-  - https://doh.pub/dns-query
-  - https://dns.alidns.com/dns-query  
-  - system
-  # Fake IP过滤
-  fake-ip-filter:
-  - '*'
-  - '+.lan'
-  - '+.local'
-  - '+.localhost'
-  # Pay
-  - '+.alipay.com'
-  # Microsoft
-  - 'time.windows.com'
-  - '+.msftconnecttest.com'
-  - '+.msftncsi.com'
-  - '+.microsoft.com'
-  - '+.windowsupdate.com'
-  - '+.xboxlive.com'
-  # Apple
-  - '+.apple.com'
-  - '+.icloud.com'
-  - '+.itunes.com'
-  - '+.appstore.com'
-  # QQ
-  - 'localhost.ptlogin2.qq.com'
-  - 'localhost.sec.qq.com'
-  # WeChat
-  - 'localhost.work.weixin.qq.com'
-  - '+.weixin.qq.com'
-  - '+.wechat.com'
-  # GeoSite
-  - 'geosite:connectivity-check'
-  - 'geosite:private'
-  # 指定域名查询的解析服务器
-  nameserver-policy:
-    geosite:cn,private:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - system
-  fallback-filter: # 后备域名解析服务器筛选
-    geoip: true    # GeoIP回退过滤 [开启]
-    geoip-code: CN # GeoIP国家代码
-    ipcidr:        # 回退IP CIDR [网段已经污染]
-    - 240.0.0.0/4
-    - 0.0.0.0/32
-    domain:        # 回退域名 [域名已经污染]
-    - +.google.com
-    - +.youtube.com
-    - +.github.com
-    - +.telegram.org
-
+allow-lan: false    # 局域网链接 [关闭]
 mode: rule          # 运行模式 [rule/global/direct]
 ipv6: false         # IPV6 [关闭]
 unified-delay: true # 统一延迟
@@ -122,13 +37,13 @@ profile:
 
 proxy-groups:
 - name: 🇹Telegram
-  type: select
+  输入: select
   proxies:
   - 🇸🇬新加坡节点
   - 🇺🇸美国节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png'
 - name: 🇾YouTube
-  type: select
+  输入: select
   proxies:
   - 🇺🇸美国节点
   - 🇭🇰香港节点
@@ -136,7 +51,7 @@ proxy-groups:
   - 🇹🇼台湾节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
 - name: 🇸Steam
-  type: select
+  输入: select
   proxies:
   - 🇨🇳中国直连
   - 🇭🇰香港节点
@@ -144,25 +59,25 @@ proxy-groups:
   - 🟩其它节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png'
 - name: 🇭GitHub
-  type: select
+  输入: select
   proxies:
   - 🇺🇸美国节点
   - 🟦所有节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png'
 - name: 🇲微软服务
-  type: select
+  输入: select
   proxies:
   - 🇨🇳中国直连
   - 🇺🇸美国节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png'
 - name: 🇬谷歌服务
-  type: select
+  输入: select
   proxies:
   - 🇺🇸美国节点
   - 🇯🇵日本节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png'
 - name: 🍎苹果服务
-  type: select
+  输入: select
   proxies:
   - 🇨🇳中国直连
   - 🇺🇸美国节点
