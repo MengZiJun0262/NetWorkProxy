@@ -166,5 +166,4 @@ rules:
   - PROCESS-NAME,WeChat.exe,🇨🇳中国直连
   - GEOSITE,CN,🇨🇳中国直连
   - GEOIP,LAN,🇨🇳中国直连
-  - GEOIP,CN,🇨🇳中国直连
   - MATCH,🟦所有节点
