@@ -164,8 +164,6 @@ rules:
   - PROCESS-NAME,Telegram.exe,🇹Telegram
   - PROCESS-NAME,QQ.exe,🇨🇳中国直连
   - PROCESS-NAME,WeChat.exe,🇨🇳中国直连
-  - PROCESS-NAME,chrome.exe,🇬谷歌服务
-  - PROCESS-NAME,msedge.exe,🇨🇳中国直连
   - GEOSITE,CN,🇨🇳中国直连
   - GEOIP,LAN,🇨🇳中国直连
   - GEOIP,CN,🇨🇳中国直连
