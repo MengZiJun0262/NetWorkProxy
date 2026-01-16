@@ -1,15 +1,15 @@
 dns:
-  enable: true                           # DNS解析 [开启]
-  listen: :53                            # DNS监听地址
-  enhanced-mode: fake-ip                 # Mihomo的DNS处理模式 [fake-ip/redir-host]
-  fake-ip-range: 198.18.0.1/16           # Fake IP范围
-  fake-ip-filter-mode: blacklist         # Fake IP过滤模式 [blacklist/whitelist]
-  ipv6: true                             # IPv6 DNS解析 [开启]
-  prefer-h3: true                        # DNS DOH使用HTTP/3协议 [开启]
-  respect-rules: false                   # DNS链接遵循路由规则 [关闭]
-  use-hosts: true                        # 通过Host文件解析域名 [开启]
-  use-system-hosts: true                 # 通过系统 Host 文件解析域名 [开启]
-  direct-nameserver-follow-policy: false # 直连域名服务器遵循策略 [关闭]
+  enable: true                          # DNS解析 [开启]
+  listen: :53                           # DNS监听地址
+  enhanced-mode: fake-ip                # Mihomo的DNS处理模式 [fake-ip/redir-host]
+  fake-ip-range: 198.18.0.1/16          # Fake IP范围
+  fake-ip-filter-mode: blacklist        # Fake IP过滤模式 [blacklist/whitelist]
+  ipv6: true                            # IPv6 DNS解析 [开启]
+  prefer-h3: true                       # DNS DOH使用HTTP/3协议 [开启]
+  respect-rules: false                  # DNS链接遵循路由规则 [关闭]
+  use-hosts: true                       # 通过Host文件解析域名 [开启]
+  use-system-hosts: true                # 通过系统 Host 文件解析域名 [开启]
+  direct-nameserver-follow-policy: true # 直连域名服务器遵循策略 [开启]
 
   default-nameserver: # 默认域名服务器, 用于解析DNS服务器的默认DNS服务器
   - 119.29.29.29
@@ -51,3 +51,21 @@ dns:
   - '*.icloud.com'
   - '*.itunes.com'
   - '*.appstore.com'
+
+  nameserver-policy: # 指定域名查询的解析服务器
+    geosite:cn,private:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - system
+
+  fallback-filter: # 后备域名解析服务器筛选
+    geoip: true    # GeoIP回退过滤 [开启]
+    geoip-code: CN # GeoIP国家代码
+    ipcidr:        # 回退IP CIDR [网段已经污染]
+    - 240.0.0.0/4
+    - 0.0.0.0/32
+    domain:        # 回退域名 [域名已经污染]
+    - +.google.com
+    - +.youtube.com
+    - +.github.com
+    - +.telegram.org
