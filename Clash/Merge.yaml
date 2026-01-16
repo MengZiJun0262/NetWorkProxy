@@ -52,7 +52,7 @@ dns:                                    # DNS覆写
   - system
   # Fake IP过滤
   fake-ip-filter:
-  - '*
+  - '*'
   - '+.lan'
   - '+.local'
   - '+.localhost'
