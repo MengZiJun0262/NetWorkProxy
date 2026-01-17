@@ -1,4 +1,27 @@
 # Clash配置 MengZiJun0262
+
+# 系统设置
+tun:                          # 虚拟网卡
+  enable: true                # 虚拟网卡模式 [开启]
+  stack: mixed                # TUN模式堆栈 [system/gvisor/mixed]
+  device: ClashMihomo         # 虚拟网卡名称
+  auto-route: true            # 自动设置全局路由 [开启]
+  strict-route: false         # 严格路由 [关闭]
+  auto-detect-interface: true # 自动选择流量出口接口 [开启]
+  dns-hijack:                 # DNS劫持
+  - any:53
+  mtu: 1500                   # 最大传输单元
+# Clash设置
+allow-lan: false    # 局域网链接 [关闭]
+mode: rule          # 运行模式 [rule/global/direct]
+ipv6: false         # IPV6 [关闭]
+unified-delay: true # 统一延迟
+log-level: info     # 日志等级
+port: 7890          # Http(s)代理端口
+socks-port: 7891    # Socks4/4a/5代理端口
+mixed-port: 7892    # 混合端口
+redir-port: 7893    # redirect透明代理端口
+tproxy-port: 7894   # tproxy透明代理端口
 geodata-mode: true                  # GeoIP数据模式 [DAT]
 geodata-loader: standard            # Geo文件加载模式 [标准]
 geo-auto-update: true               # 自动更新Geo [开启]
@@ -9,18 +32,18 @@ geox-url:                           # 自定GEO下载地址 [默认]
   mmdb:    "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
   asn:     "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
 profile:
-  store-selected: true              # 储存API对策略组的选择 [开启]
-  store-fake-ip: true               # 储存Fake-IP映射表 [开启]
+  store-selected: true        # 储存API对策略组的选择 [开启]
+  store-fake-ip: true         # 储存Fake-IP映射表 [开启]
 
 proxy-groups:
 - name: 🇹Telegram
-  输入: select
+  type: select
   proxies:
   - 🇸🇬新加坡节点
   - 🇺🇸美国节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png'
 - name: 🇾YouTube
-  输入: select
+  type: select
   proxies:
   - 🇺🇸美国节点
   - 🇭🇰香港节点
@@ -28,7 +51,7 @@ proxy-groups:
   - 🇹🇼台湾节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
 - name: 🇸Steam
-  输入: select
+  type: select
   proxies:
   - 🇨🇳中国直连
   - 🇭🇰香港节点
@@ -36,67 +59,67 @@ proxy-groups:
   - 🟩其它节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png'
 - name: 🇭GitHub
-  输入: select
+  type: select
   proxies:
   - 🇺🇸美国节点
   - 🟦所有节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png'
 - name: 🇲微软服务
-  输入: select
+  type: select
   proxies:
   - 🇨🇳中国直连
   - 🇺🇸美国节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png'
 - name: 🇬谷歌服务
-  输入: select
+  type: select
   proxies:
   - 🇺🇸美国节点
   - 🇯🇵日本节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png'
 - name: 🍎苹果服务
-  输入: select
+  type: select
   proxies:
   - 🇨🇳中国直连
   - 🇺🇸美国节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png'
 - name: 🇺🇸美国节点
-  输入: select
+  type: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(美国|🇺🇸)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png'
 - name: 🇭🇰香港节点
-  输入: select
+  type: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(香港|🇭🇰)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
 - name: 🇯🇵日本节点
-  输入: select
+  type: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(日本|🇯🇵)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png'
 - name: 🇸🇬新加坡节点
-  输入: select
+  type: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(新加坡|🇸🇬)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png'
 - name: 🇹🇼台湾节点
-  输入: select
+  type: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(台湾|🇹🇼|🇨🇳)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png'
 - name: 🟩其它节点
-  输入: select
+  type: select
   include-all: true
   exclude-type: direct
   filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇹🇼|港|台|日|新|美)).*"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rainbow_1.png'
 - name: 🟦所有节点
-  输入: select
+  type: select
   proxies:
   - 🇺🇸美国节点
   - 🇯🇵日本节点
@@ -106,55 +129,62 @@ proxy-groups:
   - 🟩其它节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png'
 - name: 🟥全球拦截
-  输入: select
+  type: select
   proxies:
   - REJECT
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlack.png'
 - name: 🇨🇳中国直连
-  输入: select
+  type: select
   proxies:
   - DIRECT
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png'
 
 rule-providers:
   Google:
-    输入: http
+    type: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Google.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.yaml"
   Microsoft:
-    输入: http
+    type: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Microsoft.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Microsoft/Microsoft.yaml"
   Apple:
-    输入: http
+    type: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Apple.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple_Classical.yaml"
   YouTube:
-    输入: http
+    type: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/YouTube.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTube/YouTube.yaml"
   Steam:
-    输入: http
+    type: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Steam.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Steam/Steam.yaml"
   GitHub:
-    输入: http
+    type: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/GitHub.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.yaml"
+  ChinaMax:
+    type: http
+    interval: 86400
+    behavior: domain
+    path: ./RuleSet/ChinaMax.yaml
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml"
 
 rules:
+  - GEOIP,LAN,🇨🇳中国直连
   - RULE-SET,Microsoft,🇲微软服务
   - RULE-SET,Google,🇬谷歌服务
   - RULE-SET,Apple,🍎苹果服务
@@ -164,6 +194,6 @@ rules:
   - PROCESS-NAME,Telegram.exe,🇹Telegram
   - PROCESS-NAME,QQ.exe,🇨🇳中国直连
   - PROCESS-NAME,WeChat.exe,🇨🇳中国直连
+  - RULE-SET,ChinaMax,🇨🇳中国直连
   - GEOSITE,CN,🇨🇳中国直连
-  - GEOIP,LAN,🇨🇳中国直连
   - MATCH,🟦所有节点
