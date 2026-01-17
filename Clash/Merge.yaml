@@ -59,7 +59,7 @@ proxy-groups:
   - 🟩其它节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png'
 - name: 🇭GitHub
-  type: select
+  输入: select
   proxies:
   - 🇺🇸美国节点
   - 🟦所有节点
@@ -76,50 +76,50 @@ proxy-groups:
   - 🇺🇸美国节点
   - 🇯🇵日本节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png'
-- name: 🍎苹果服务
-  type: select
+- name: 🇮苹果服务
+  输入: select
   proxies:
   - 🇨🇳中国直连
   - 🇺🇸美国节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png'
 - name: 🇺🇸美国节点
-  type: select
+  输入: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(美国|🇺🇸)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png'
 - name: 🇭🇰香港节点
-  type: select
+  输入: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(香港|🇭🇰)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png'
 - name: 🇯🇵日本节点
-  type: select
+  输入: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(日本|🇯🇵)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png'
 - name: 🇸🇬新加坡节点
-  type: select
+  输入: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(新加坡|🇸🇬)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png'
 - name: 🇹🇼台湾节点
-  type: select
+  输入: select
   url: 'https://www.gstatic.com/generate_204'
   include-all: true
   filter: "(?i)(台湾|🇹🇼|🇨🇳)"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png'
 - name: 🟩其它节点
-  type: select
+  输入: select
   include-all: true
   exclude-type: direct
   filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇹🇼|港|台|日|新|美)).*"
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rainbow_1.png'
 - name: 🟦所有节点
-  type: select
+  输入: select
   proxies:
   - 🇺🇸美国节点
   - 🇯🇵日本节点
@@ -129,55 +129,55 @@ proxy-groups:
   - 🟩其它节点
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png'
 - name: 🟥全球拦截
-  type: select
+  输入: select
   proxies:
   - REJECT
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlack.png'
 - name: 🇨🇳中国直连
-  type: select
+  输入: select
   proxies:
   - DIRECT
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png'
 
 rule-providers:
   Google:
-    type: http
+    输入: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Google.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.yaml"
   Microsoft:
-    type: http
+    输入: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Microsoft.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Microsoft/Microsoft.yaml"
   Apple:
-    type: http
+    输入: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Apple.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple_Classical.yaml"
   YouTube:
-    type: http
+    输入: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/YouTube.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTube/YouTube.yaml"
   Steam:
-    type: http
+    输入: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/Steam.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Steam/Steam.yaml"
   GitHub:
-    type: http
+    输入: http
     interval: 86400
     behavior: classical
     path: ./RuleSet/GitHub.yaml
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.yaml"
   ChinaMax:
-    type: http
+    输入: http
     interval: 86400
     behavior: domain
     path: ./RuleSet/ChinaMax.yaml
@@ -187,7 +187,7 @@ rules:
   - GEOIP,LAN,🇨🇳中国直连
   - RULE-SET,Microsoft,🇲微软服务
   - RULE-SET,Google,🇬谷歌服务
-  - RULE-SET,Apple,🍎苹果服务
+  - RULE-SET,Apple,🇮苹果服务
   - RULE-SET,YouTube,🇾YouTube
   - RULE-SET,Steam,🇸Steam
   - RULE-SET,GitHub,🇭GitHub
