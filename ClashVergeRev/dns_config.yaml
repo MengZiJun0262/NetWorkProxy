@@ -133,6 +133,7 @@ dns                              :                           # DNS覆写
   - "+.stun.*.*.*"
   - "+.stun.*.*.*.*"
   - "+.stun.*.*.*.*.*"
+  - "myip.addr.tools"
 #Linksys Router
   - "heartbeat.belkin.com"
   - "*.linksys.com"
