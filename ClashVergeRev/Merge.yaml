@@ -1,0 +1,56 @@
+# Profile Enhancement Merge Template for Clash Verge
+# @MengZiJun0262
+
+Nodes  : &Nodes   {type: select,  include-all: true, url: 'https://www.gstatic.com/generate_204'}
+Groups : &Groups  {type: select, proxies: [🇺🇸美国节点,🇭🇰香港节点,🇯🇵日本节点,🇸🇬新加坡节点,🇹🇼台湾节点,🇨🇳中国直连,🟩其它节点,🟥全球拦截]}
+
+profile:
+  store-selected   : true # 储存API对策略组的选择
+  store-fake-ip    : true # 储存Fake-IP映射表
+geo-auto-update    : true # 自动更新
+geo-update-interval: 24   # 更新间隔
+geox-url           :      # 下载地址
+  geoip            : "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite          : "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb             : "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+  asn              : "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+proxy-groups:
+  - {name: 🇹Telegram,  <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png"}
+  - {name: 🇬谷歌服务,   <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png"}
+  - {name: 🇲微软服务,   <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png"}
+  - {name: 🇮苹果服务,   <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png"}
+  - {name: 🇸Steam,     <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png"}
+  - {name: 🇾YouTube,   <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png"}
+  - {name: 🇭GitHub,    <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png"}
+  - {name: 🤖人工智能,   <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png"}
+  - {name: 🟪中外切换,   <<: *Groups, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png"}
+  - {name: 🇺🇸美国节点,   <<: *Nodes, filter: "(?i)(美|🇺🇸)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png"}
+  - {name: 🇭🇰香港节点,   <<: *Nodes, filter: "(?i)(港|🇭🇰)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png"}
+  - {name: 🇯🇵日本节点,   <<: *Nodes, filter: "(?i)(日|🇯🇵)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png"}
+  - {name: 🇸🇬新加坡节点, <<: *Nodes, filter: "(?i)(新|🇸🇬)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png"}
+  - {name: 🇹🇼台湾节点,   <<: *Nodes, filter: "(?i)(台|🇹🇼|🇨🇳)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png"}
+  - {name: 🇨🇳中国直连,   type: select, proxies: [DIRECT], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png"}
+  - {name: 🟧广告拦截,   type: select, proxies: [REJECT,DIRECT], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlack.png"}
+  - {name: 🟥全球拦截,   type: select, proxies: [REJECT], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png"}
+  - {name: 🟩其它节点,   <<: *Nodes, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇹🇼)).*", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rainbow_1.png"}
+  - {name: 🟦所有节点,   type: select, include-all: true, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png"}
+
+rules:
+  - GEOSITE, category-ads-all, REJECT
+  - GEOSITE, private,          DIRECT
+  - GEOIP,   private,          🇨🇳中国直连,no-resolve
+  - GEOSITE, openai,           🤖人工智能
+  - GEOSITE, youtube,          🇾YouTube
+  - GEOSITE, google,           🇬谷歌服务
+  - GEOSITE, microsoft@cn,     🟪中外切换
+  - GEOSITE, microsoft,        🇲微软服务
+  - GEOSITE, apple-cn,         🟪中外切换
+  - GEOSITE, apple,            🇮苹果服务
+  - GEOSITE, steam@cn,         🟪中外切换
+  - GEOSITE, steam,            🇸Steam
+  - GEOSITE, telegram,         🇹Telegram
+  - GEOIP,   telegram,         🇹Telegram,no-resolve
+  - GEOIP,   private,          🇨🇳中国直连,no-resolve
+  - GEOSITE, cn,               🇨🇳中国直连
+  - GEOIP,   cn,               🇨🇳中国直连,no-resolve
+  - MATCH,                     🟦所有节点
