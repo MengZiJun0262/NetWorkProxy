@@ -51,6 +51,7 @@ rules:
   - GEOSITE, telegram,         🇹Telegram
   - GEOIP,   telegram,         🇹Telegram,no-resolve
   - GEOIP,   private,          🇨🇳中国直连,no-resolve
+  - DST-PORT,443,              🟦所有节点
   - GEOSITE, cn,               🇨🇳中国直连
   - GEOIP,   cn,               🇨🇳中国直连,no-resolve
   - MATCH,                     🟦所有节点
