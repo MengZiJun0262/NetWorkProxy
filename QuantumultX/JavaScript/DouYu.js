@@ -30,7 +30,7 @@ if (obj && obj.data) {
   }
   
   // 2. 鱼吧/关注页接口 (apiv3 - followedUserFeedList)
-  else if (url.includes('/mgapi/yubanc/api/feed/followedUserFeedList/v2')) {
+  else if (url.includes('/mgapi/yubanc/api/feed/followedUserFeedList')) {
     // 过滤掉 type 为 "ad" 的条目
     if (obj.data.list && Array.isArray(obj.data.list)) {
       obj.data.list = obj.data.list.filter(item => item.type !== "ad");
