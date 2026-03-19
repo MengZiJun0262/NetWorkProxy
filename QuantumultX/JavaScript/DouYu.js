@@ -53,6 +53,14 @@ if (obj && obj.data) {
       obj.data.list = obj.data.list.filter(item => item.type !== 3);
     }
   }
+
+  // 5. 关闭直播间推荐接口 (apiv3 - mCloseAdvice)
+  else if (url.includes('/mgapi/livenc/mroom/closerecommend/mCloseAdvice')) {
+    // 直接删除 ad_info 字段（广告）
+    if (obj.data.ad_info) {
+      delete obj.data.ad_info;
+    }
+  }
   
   // 其他接口
   
