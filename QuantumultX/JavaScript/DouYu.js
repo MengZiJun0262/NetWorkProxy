@@ -1,5 +1,7 @@
 // DouYu.js - 斗鱼去广告脚本
 // GitHub - MengZiJun0262
+// Time - 2026-3-20
+
 let body = $response.body;
 let url = $request.url;
 let obj = JSON.parse(body);
@@ -44,7 +46,16 @@ if (obj && obj.data) {
     // feed_list 和 topic_card 里的内容全部保留
   }
   
-  // 其他
+  // 4. 鱼吧/热议房间接口 (apiv3 - room/heated/list)
+  else if (url.includes('/mgapi/yubanc/api/room/heated/list')) {
+    // 过滤掉 type 为 3 的广告条目
+    if (obj.data.list && Array.isArray(obj.data.list)) {
+      obj.data.list = obj.data.list.filter(item => item.type !== 3);
+    }
+  }
+  
+  // 其他接口
+  
 }
 
 $done({body: JSON.stringify(obj)});
