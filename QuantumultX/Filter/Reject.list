@@ -1,7 +1,18 @@
-#百度贴吧
-#屏蔽域名dns查询，配合贴吧去广告 https://raw.githubusercontent.com/app2smile/rules
+# 百度贴吧
+# 屏蔽域名dns查询，配合贴吧去广告 https://raw.githubusercontent.com/app2smile/rules
 IP-CIDR, 180.76.76.200/32, REJECT
-#滴滴出行
+
+# 滴滴出行
 IP-CIDR, 123.207.209.39/32, REJECT
 IP-CIDR, 123.207.209.60/32, REJECT
 IP-CIDR, 139.199.240.12/32, REJECT
+
+# 大师兄 https://dsxys.com/
+host-suffix, sigmob.cn, reject
+host-suffix, gdt.qq.com, reject
+host-suffix, umeng.com, reject
+
+
+host-suffix, adsmind.gdtimg.com, reject
+host-suffix, us.l.qq.com, reject
+host-suffix, umengcloud.com, reject
