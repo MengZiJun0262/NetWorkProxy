@@ -1,0 +1,19 @@
+# Provider Group for Clash Verge
+# @MengZiJun0262
+
+Provider: &Provider {type: http, filter: "^(?!.*(?:到期|时间|剩余|流量|过滤)).*$"}
+
+proxy-providers:
+  1:
+    <<: *Provider
+    url: 
+    path: ./profiles/proxies/*.yaml
+    override:
+      additional-prefix: "*-"
+
+  2:
+    <<: *Provider
+    url: 
+    path: ./profiles/proxies/*.yaml
+    override:
+      additional-prefix: "*-"
