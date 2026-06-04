@@ -53,7 +53,7 @@ rules:
   - GEOSITE, microsoft,        🟩微软服务
   - GEOSITE, apple,            🟧苹果服务
   - GEOSITE, steam,            ⬜Steam
-  - GEOSITE, telegram,         🟦Telegram
+  - GEOIP,   telegram,         🟦Telegram,no-resolve
   
   - GEOSITE, cn,               🇨🇳中国直连
   - GEOIP,   cn,               🇨🇳中国直连,no-resolve
