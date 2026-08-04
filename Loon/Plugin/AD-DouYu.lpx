@@ -2,6 +2,7 @@
 #!desc=斗鱼直播完全净化
 #!author=MZz1Jun
 #!homepage=https://github.com/MZz1Jun
+#!icon = https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/IconSet/Apps/DouYu.svg
 #!date=2026-08-02
 
 [Rewrite]
