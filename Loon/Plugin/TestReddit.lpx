@@ -1,3 +1,8 @@
+#!name=Reddit
+#!desc=移除Reddit广告，阻止NSFW提示，开启自动翻译
+#!author=xream,RavelloH,MZz1Jun
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Reddit.png
+
 [Rewrite]
 
 ^https?:\/\/gql(-fed)?\.reddit\.com response-body-json-jq 'walk( if type == "object" then (if .isNsfw == true then .isNsfw = false else . end) | (if .isNsfwMediaBlocked == true then .isNsfwMediaBlocked = false else . end) | (if .isNsfwContentShown == false then .isNsfwContentShown = true else . end) | (if (.commentsPageAds | type == "array") then (.commentsPageAds = []) else . end) | (if ( (.node | type == "object") and (.node.cells | type == "array") and (.node.cells | any(.__typename? == "AdMetadataCell" or .isAdPost? == true)) ) then empty else . end) | (if (.node | type == "object") and (.node.adPayload | type == "object") then empty else . end) | (if .__typename == "AdPost" then empty else . end) else . end)'
