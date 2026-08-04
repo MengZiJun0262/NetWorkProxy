@@ -2,8 +2,8 @@
 #!desc=自动开启 Reddit App 翻译功能
 #!author=RavelloH
 
-http-request ^https?:\/\/gql(-fed)?\.reddit\.com script-path=https://gist.github.com/RavelloH/68ed0626dae69a1ce7c8ad6887087ea1/raw/c008127260bc4dcd550fcd98285048cf6176f602/main.js, timeout=60, tag=main
+[Script]
+http-request ^https?:\/\/gql(-fed)?\.reddit\.com script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/Loon/JavaScript/Translate-Reddit.js, timeout=60, tag=Translate-Reddit
 
-^https?:\/\/gql(-fed)?\.reddit\.com url script-request-header https://gist.github.com/RavelloH/68ed0626dae69a1ce7c8ad6887087ea1/raw/c008127260bc4dcd550fcd98285048cf6176f602/main.js
-
+[MITM]
 hostname = gql.reddit.com, gql-fed.reddit.com
