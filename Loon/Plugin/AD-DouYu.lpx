@@ -1,0 +1,29 @@
+#!name=斗鱼直播去广告
+#!desc=斗鱼直播完全净化
+#!author=MZz1Jun
+#!homepage=https://github.com/MZz1Jun
+#!date=2026-08-02
+
+[Rewrite]
+
+# 斗鱼广告接口
+^https?:\/\/rtbapi\.douyucdn\.cn reject-dict
+# 斗鱼房间相关广告
+^https?:\/\/apiv2\.douyucdn\.cn\/japi\/entrance\/roomRes reject-dict
+
+[Script]
+
+# 斗鱼首页推荐广告
+http-response ^https?:\/\/apiv2\.douyucdn\.cn\/mgapi\/livenc\/home\/getRecV3 script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/Loon/JavaScript/AD-DouYu.js,requires-body=true,timeout=60,tag=AD_DouYu
+# 斗鱼热议房间广告
+http-response ^https?:\/\/apiv3\.douyucdn\.cn\/mgapi\/yubanc\/api\/room\/heated\/list script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/Loon/JavaScript/AD-DouYu.js,requires-body=true,timeout=60,tag=AD_DouYu
+# 斗鱼关注页广告
+http-response ^https?:\/\/apiv3\.douyucdn\.cn\/mgapi\/yubanc\/api\/feed\/followedUserFeedList script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/Loon/JavaScript/AD-DouYu.js,requires-body=true,timeout=60,tag=AD_DouYu
+# 斗鱼鱼吧页广告
+http-response ^https?:\/\/apiv3\.douyucdn\.cn\/mgapi\/yubanc\/api\/yubaTab\/recommendFeedList script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/Loon/JavaScript/AD-DouYu.js,requires-body=true,timeout=60,tag=AD_DouYu
+# 斗鱼未开播直播间推荐广告
+http-response ^https?:\/\/apiv3\.douyucdn\.cn\/mgapi\/livenc\/mroom\/closerecommend\/mCloseAdvice script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/Loon/JavaScript/AD-DouYu.js,requires-body=true,timeout=60,tag=AD_DouYu
+
+[MITM]
+
+hostname = apiv2.douyucdn.cn,apiv3.douyucdn.cn,rtbapi.douyucdn.cn
