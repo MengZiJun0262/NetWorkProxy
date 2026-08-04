@@ -1,6 +1,8 @@
 #!name=Reddit 自动翻译
 #!desc=自动开启 Reddit App 翻译功能
+#!icon = https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/IconSet/Apps/Reddit.png
 #!author=RavelloH
+
 
 [Script]
 http-request ^https?:\/\/gql(-fed)?\.reddit\.com script-path=https://raw.githubusercontent.com/MZz1Jun/NetWorkProxy/master/Loon/JavaScript/Translate-Reddit.js, timeout=60, tag=Translate-Reddit
